@@ -53,6 +53,14 @@ const schema = mongoose.Schema({
         type:String,
         required:true
     },
+    count:{
+        type:String,
+      
+    },
+    edate:{
+        type:Date,
+      
+    },
     
 })
 

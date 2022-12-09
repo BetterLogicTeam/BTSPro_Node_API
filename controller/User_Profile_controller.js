@@ -1,14 +1,22 @@
 const User_profile = require('../models/User_profile')
 const userSchema = require('../models/userModel')
+const user_Collection = require('../models/Create_NFT')
+
 
 
 exports.create_user_profile = async (req, res) => {
     try {
-        console.log("file.originalname", req.file.originalname);;
-        let { address} = req.body;
-        let userData = await User_profile.findOne({address });
+
+        let {
+            address
+        } = req.body;
+        let userData = await User_profile.findOne({
+            address
+        });
         if (userData == null) {
-            const data = new User_profile({ ...req.body, image: req.file.originalname
+            const data = new User_profile({
+                ...req.body,
+                image: req.file.originalname
             });
             await data.save();
             res.status(201).send({
@@ -29,23 +37,37 @@ exports.create_user_profile = async (req, res) => {
 
 
 exports.update_user_profile = async (req, res) => {
+
+
     const update = {
         username: req.body.username,
         email: req.body.email,
         bio: req.body.bio,
-        image: req.file.originalname
+        image: req.file.originalname,
+        address: req.body.address,
     }
-  const  {address}= req.query
-    
-    const updatedDocument = await User_profile.findOneAndUpdate(address, update, {
+    const {
+        address
+    } = req.query
+
+
+
+
+    const updatedDocument = await User_profile.findOneAndUpdate(address, {
+        $set: update
+    }, {
         new: true
     });
     console.log("updatedDocument", updatedDocument);
     return res.status(200).send(updatedDocument);
+
+
 };
 
 exports.get_user_profile = async (req, res) => {
     try {
+        let User = await User_profile.find()
+        console.log("User", User);
         let {
             address
         } = req.query
@@ -67,6 +89,28 @@ exports.get_user_profile = async (req, res) => {
             })
 
         }
+
+    } catch (error) {
+        console.error("error while get user", error);
+    }
+}
+
+
+
+exports.Collection_NFT = async (req, res) => {
+    try {
+
+        const data = new user_Collection({
+            image: req.file.originalname
+        });
+       let resdata= await data.save();
+        res.status(201).send({
+            data :resdata,
+            success: true,
+            msg: "NFT Created"
+        })
+       
+        
 
     } catch (error) {
         console.error("error while get user", error);

@@ -1,10 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const Moralis = require("moralis").default;
-const { EvmChain } = require("@moralisweb3/evm-utils");
+
 const path = require('path')
 // import db connection
-const  fs = require('fs')
+
 
 const dbConnection = require("./connection/db")
 // import router
