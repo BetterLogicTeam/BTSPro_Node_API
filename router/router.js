@@ -5,7 +5,9 @@ const upload = require("../middleware/multer")
 const {getUser,open_marketplace,sell_marketplace_history,OnAuction_marketplace_history,sell_and_auction_history,sell_and_auction_history_address,Get_New_NFTs} = require("../controller/userController")
 const {create_user_profile,get_user_profile,update_user_profile,Collection_NFT} = require('../controller/User_Profile_controller')
 const {trending_address_marketplace,trending_NFTs,get_trending_NFTs,update_tranding} =require('../controller/trending_NFTs')
-const {update_auction_status,update_sell_status,update_Tranding} =require('../controller/update_status')
+const {update_auction_status,update_sell_status,update_Tranding} =require('../controller/update_status');
+const { create_Bid_History, get_Bid_History } = require("../controller/Biding_History");
+const { create_Latest_Bids, get_Latest_Bids } = require("../controller/Latest_Bids_Controller");
 
 const router = express.Router();
 router.use(bodyParser.urlencoded({extended:false}));
@@ -48,7 +50,15 @@ router.route("/update_Tranding").post(update_Tranding)
 
 
 
+// ----------------------Biding_History-------------------------------------------
 
+router.route("/create_Bid_History").post(create_Bid_History)
+router.route("/get_Bid_History").get(get_Bid_History)
+
+// ----------------------Latest_Bids-------------------------------------------
+
+router.route("/create_Latest_Bids").post(create_Latest_Bids)
+router.route("/get_Latest_Bids").get(get_Latest_Bids)
 
 
 

@@ -57,6 +57,10 @@ const schema = mongoose.Schema({
         type:Number,
         default:0
     },
+    Blockchain:{
+        type:String,
+      
+    },
     
 })
 const Tranding_Market_NFTs = mongoose.model("Tranding_Market_NFTs", schema);

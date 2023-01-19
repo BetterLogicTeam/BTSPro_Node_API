@@ -13,5 +13,4 @@ const dbConnection = () => {
         console.error("error while connect db");
     }
 }
-
 module.exports = dbConnection;

@@ -61,7 +61,10 @@ const schema = mongoose.Schema({
         type:Date,
       
     },
-    
+    Blockchain:{
+        type:String,
+      
+    },
 })
 
 

@@ -10,7 +10,7 @@ exports.create_user_profile = async (req, res) => {
         let {
             address
         } = req.body;
-        let userData = await User_profile.findOne({
+        let userData = await User_profile.findOne({ 
             address
         });
         if (userData == null) {

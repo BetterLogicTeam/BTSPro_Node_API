@@ -3,8 +3,6 @@ const cors = require("cors");
 
 const path = require('path')
 // import db connection
-
-
 const dbConnection = require("./connection/db")
 // import router
 const router = require("./router/router")
