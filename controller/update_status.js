@@ -13,7 +13,7 @@ exports.update_auction_status = async (req, res) => {
         if (Find_ID.length !==0) {
             const Delete_token_id = await userSchema.deleteOne({tokenId:tokenid});
             res.status(201).send({
-                data: Delete_token_id,
+                data: Delete_token_id, 
                 success: true,
                 msg: "Data deleted"
             })
